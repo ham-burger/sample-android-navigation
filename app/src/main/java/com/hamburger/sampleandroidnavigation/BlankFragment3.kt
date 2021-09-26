@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.hamburger.sampleandroidnavigation.databinding.FragmentBlankBinding
+import androidx.navigation.fragment.navArgs
+import com.hamburger.sampleandroidnavigation.databinding.FragmentBlank3Binding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,16 +15,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [BlankFragment.newInstance] factory method to
+ * Use the [BlankFragment3.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BlankFragment : Fragment() {
+class BlankFragment3 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var _binding: FragmentBlankBinding? = null
+    private var _binding: FragmentBlank3Binding? = null
     private val binding get() = _binding!!
-
+    val args: BlankFragment3Args by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,28 +38,13 @@ class BlankFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentBlankBinding.inflate(
-            inflater,
-            container,
-            false
-        )// inflater.inflate(R.layout.fragment_blank, container, false)
-        binding.navigateToBlank2.setOnClickListener {
-            val action = BlankFragmentDirections.actionBlankFragmentToBlankFragment2()
-            findNavController().navigate(action)
-        }
-        binding.navigateToBlank3.setOnClickListener {
-            val id = 100
-            val name = "this fragment is blank3!"
-            val action = BlankFragmentDirections.actionBlankFragmentToBlankFragment3(id, name)
-            findNavController().navigate(action)
-        }
+//        return inflater.inflate(R.layout.fragment_blank3, container, false)
+        _binding = FragmentBlank3Binding.inflate(inflater, container, false)
+        binding.id.text = args.id.toString()
+        binding.name.text = args.name
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 
     companion object {
         /**
@@ -68,12 +53,12 @@ class BlankFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment BlankFragment.
+         * @return A new instance of fragment BlankFragment3.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            BlankFragment().apply {
+            BlankFragment3().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

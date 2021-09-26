@@ -17,6 +17,22 @@
             android:id="@+id/action_blankFragment_to_blankFragment2"
             app:destination="@id/blankFragment2"
             />
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment3"
+            app:destination="@id/blankFragment3"
+            >
+            <argument
+                android:name="id"
+                android:defaultValue="0"
+                app:argType="integer"
+                />
+
+            <argument
+                android:name="name"
+                android:defaultValue="sample name"
+                app:argType="string"
+                />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/blankFragment2"
@@ -24,4 +40,22 @@
         android:label="fragment_blank2"
         tools:layout="@layout/fragment_blank2"
         />
+    <fragment
+        android:id="@+id/blankFragment3"
+        android:name="com.hamburger.sampleandroidnavigation.BlankFragment3"
+        android:label="fragment_blank3"
+        tools:layout="@layout/fragment_blank3"
+        >
+        <argument
+            android:name="name"
+            android:defaultValue="sample name"
+            app:argType="string"
+            />
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer"
+            />
+
+    </fragment>
 </navigation>
